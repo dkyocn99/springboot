@@ -16,11 +16,4 @@ public class TempControllerTest {
         //풀경로: src/main/resources/static/home.html
         return "/home.html";
     }
-
-    @GetMapping("/temp/img")
-    public String tempImg() {
-
-        return "/cat.png";
-    }
-
 }
