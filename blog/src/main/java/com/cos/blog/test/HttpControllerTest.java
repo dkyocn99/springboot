@@ -32,8 +32,17 @@ public class HttpControllerTest {
     @GetMapping("/http/get")
     public String getTest(Member member) {
 
-        return "get요청: "+member.getId()+","+member.getUsername()+","+member.getPassword()+","+member.getEmail();
+        //String.format을 이용하여 만듦
+        return String.format("Get 요청: %d, %s, %s, %s",member.getId(), member.getUsername(), member.getPassword(), member.getEmail());
+//        return "get요청: "+member.getId()+","+member.getUsername()+","+member.getPassword()+","+member.getEmail();
     }
+
+    //return type을 ResponseEntity로 만듦
+//    @GetMapping("/http/get")
+//    public ResponseEntity getTest(Member member) {
+//
+//        return new ResponseEntity(HttpStatus.OK);
+//    }
 
     //MessageConverter(스프링부트)
     //appllication/json
@@ -41,7 +50,11 @@ public class HttpControllerTest {
     @PostMapping("/http/post")
     public String postTest(@RequestBody Member member) {
 
-        return "post요청: "+member.getId()+","+member.getUsername()+","+member.getPassword()+","+member.getEmail();
+
+
+
+
+        return String.format("post요청: %d, %s, %s, %s",member.getId(), member.getUsername(), member.getPassword(), member.getEmail());
     }
 
 //    @PostMapping("/http/post")//text/plan
