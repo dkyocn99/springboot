@@ -31,7 +31,7 @@ public class Board {
     @ColumnDefault("0")
     private int count;//조회수
 
-    @ManyToOne(fetch = FetchType.EAGER) // Many = Board, one = User
+    @ManyToOne(fetch = FetchType.LAZY) // Many = Board, one = User
     @JoinColumn(name = "userId")//필드값 userId로 들어감
     private User user; //DB는 오브젝트를 저장할 수 없다. FK, 자바는 오브젝트를 저장할 수 있다.
 

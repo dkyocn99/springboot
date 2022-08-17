@@ -1,12 +1,14 @@
 package com.cos.blog.test;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 //사용자가 요청 -> 응답(html파일)
 //@Controller
 
 //사용자가 요청-> 응답(Data)
+@Slf4j
 @RestController
 public class HttpControllerTest {
 
@@ -16,7 +18,7 @@ public class HttpControllerTest {
     public String lombokTest() {
         Member m = Member.builder().username("ssar").password("1234").email("ssar@nate.com").build();
 
-
+        log.info("{} getter : {}", TAG, m.getUsername());
         System.out.println(TAG + "getter : " + m.getUsername());
         m.setUsername("cos");
         System.out.println(TAG + "getter : " + m.getUsername());
