@@ -10,7 +10,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = IllegalArgumentException.class)
     public String handleArgumentException(IllegalArgumentException e) {
-        return String.format("<h1> %s </h1>",e.getMessage());
+        return String.format("<h1> %s </h1>", e.getMessage());
         //return "<h1>+e.getMessage()+"</h1>;
     }
 }

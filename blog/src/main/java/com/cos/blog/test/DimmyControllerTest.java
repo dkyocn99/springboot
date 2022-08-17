@@ -20,19 +20,20 @@ public class DimmyControllerTest {
 
     @Autowired//의존성 주주입(DI)
     private UserRepository userRepository;
-//SELECT
+
+    //SELECT
     //http://localhost:8000/blog/dummy/user
     @GetMapping("dummy/users")
-    public List<User>list() {
+    public List<User> list() {
         return userRepository.findAll();
     }
 
     //한페이지당 2건에 데이터를 리턴받아 볼 예정
     @GetMapping("dummy/user")
-    public List<User> pagelist(@PageableDefault(size = 2, sort = "id", direction = Sort.Direction.DESC)Pageable pageable) {
+    public List<User> pagelist(@PageableDefault(size = 2, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 //        Page <User> users = userRepository.findAll(pageable);
         //isFirst: 첫번째 데이터?, isLast: 마지막 데이터?
-        List <User> users = userRepository.findAll(pageable).getContent();
+        List<User> users = userRepository.findAll(pageable).getContent();
 
         return users;
     }
@@ -50,7 +51,7 @@ public class DimmyControllerTest {
         User user = userRepository.findById(id).orElseThrow(new Supplier<IllegalArgumentException>() {
             @Override
             public IllegalArgumentException get() {
-                return new IllegalArgumentException("해당 유저는 없습니다. id"+id);
+                return new IllegalArgumentException("해당 유저는 없습니다. id" + id);
             }
         });
 // 람다식 => ()->으로  return을 뺸 나머지 부분 생략 가능
@@ -78,8 +79,8 @@ public class DimmyControllerTest {
         System.out.println("password: " + requestUser.getPassword());
         System.out.println("email: " + requestUser.getEmail());
 
-        User user = userRepository.findById(id).orElseThrow(()-> {
-                return new IllegalArgumentException("수정에 싪패하였습니다.");
+        User user = userRepository.findById(id).orElseThrow(() -> {
+            return new IllegalArgumentException("수정에 싪패하였습니다.");
         });
         user.setPassword(requestUser.getPassword());
         user.setEmail(requestUser.getEmail());
@@ -94,10 +95,10 @@ public class DimmyControllerTest {
     public String deleteUser(@PathVariable int id) {
         try {
             userRepository.deleteById(id);
-        }catch (EmptyResultDataAccessException e) {
+        } catch (EmptyResultDataAccessException e) {
             return "삭제에 실패하였습니다. 해당 id는 DB에 존재하지 않습니다.";
         }
-        return "삭제되었습니다. id; "+id;
+        return "삭제되었습니다. id; " + id;
     }
 
 
@@ -107,11 +108,11 @@ public class DimmyControllerTest {
 //    public String join(String username, String password, String email) {//key=value (약속된 규칙)
     public String join(User user) {//key=value (약속된 규칙)
 
-        System.out.println("username: "+user.getUsername());
-        System.out.println("password: "+user.getPassword());
-        System.out.println("email: "+user.getEmail());
-        System.out.println("role: "+user.getRole());
-        System.out.println("createDate: "+user.getCreateDate());
+        System.out.println("username: " + user.getUsername());
+        System.out.println("password: " + user.getPassword());
+        System.out.println("email: " + user.getEmail());
+        System.out.println("role: " + user.getRole());
+        System.out.println("createDate: " + user.getCreateDate());
 
         user.setRole(RoleType.USER);
         userRepository.save(user);

@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class HttpControllerTest {
 
-    private static final String TAG="HttpControllerTest: ";
+    private static final String TAG = "HttpControllerTest: ";
 
     @GetMapping("/http/lombok")
     public String lombokTest() {
         Member m = Member.builder().username("ssar").password("1234").email("ssar@nate.com").build();
 
 
-        System.out.println(TAG+"getter : "+m.getUsername());
+        System.out.println(TAG + "getter : " + m.getUsername());
         m.setUsername("cos");
-        System.out.println(TAG+"getter : "+m.getUsername());
+        System.out.println(TAG + "getter : " + m.getUsername());
 
         return "lombok test 완료";
     }
@@ -33,7 +33,7 @@ public class HttpControllerTest {
     public String getTest(Member member) {
 
         //String.format을 이용하여 만듦
-        return String.format("Get 요청: %d, %s, %s, %s",member.getId(), member.getUsername(), member.getPassword(), member.getEmail());
+        return String.format("Get 요청: %d, %s, %s, %s", member.getId(), member.getUsername(), member.getPassword(), member.getEmail());
 //        return "get요청: "+member.getId()+","+member.getUsername()+","+member.getPassword()+","+member.getEmail();
     }
 
@@ -51,10 +51,7 @@ public class HttpControllerTest {
     public String postTest(@RequestBody Member member) {
 
 
-
-
-
-        return String.format("post요청: %d, %s, %s, %s",member.getId(), member.getUsername(), member.getPassword(), member.getEmail());
+        return String.format("post요청: %d, %s, %s, %s", member.getId(), member.getUsername(), member.getPassword(), member.getEmail());
     }
 
 //    @PostMapping("/http/post")//text/plan
@@ -67,13 +64,13 @@ public class HttpControllerTest {
     @PutMapping("/http/put")
     public String putTest(@RequestBody Member member) {
 
-        return "put요청: "+member.getId()+","+member.getUsername()+","+member.getPassword()+","+member.getEmail();
+        return "put요청: " + member.getId() + "," + member.getUsername() + "," + member.getPassword() + "," + member.getEmail();
     }
 
     //delete
     @DeleteMapping("/http/delete")
     public String deleteTest(@RequestBody Member member) {
 
-        return "delete요청: "+member.getId()+","+member.getUsername()+","+member.getPassword()+","+member.getEmail();
+        return "delete요청: " + member.getId() + "," + member.getUsername() + "," + member.getPassword() + "," + member.getEmail();
     }
 }

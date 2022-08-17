@@ -22,17 +22,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //프로젝트에서 연결된 DB의 넘버링 전략을 따라간다.
     private int id; //시퀸스, auto_increment
 
-    @Column(nullable = false,length = 30)
+    @Column(nullable = false, length = 30)
     private String username; //아이디
 
-    @Column(nullable = false,length = 100)//해쉬(비밀번호 암호화)
+    @Column(nullable = false, length = 100)//해쉬(비밀번호 암호화)
     private String password;
 
-    @Column(nullable = false,length = 50)
+    @Column(nullable = false, length = 50)
     private String email;
 
 
-//    @ColumnDefault("user")
+    //    @ColumnDefault("user")
 //    private String role;//Enum을 쓰는게 좋다.=> admin, user, manager 셋 중에 하나만 들어가게 만들 수 있다.
     @Enumerated(EnumType.STRING)
     private RoleType role;

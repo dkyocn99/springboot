@@ -22,7 +22,7 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)//suto-increment
     private int id;
 
-    @Column(nullable = false,length = 100)
+    @Column(nullable = false, length = 100)
     private String title;
 
     @Lob
@@ -32,10 +32,10 @@ public class Board {
     private int count;//조회수
 
     @ManyToOne(fetch = FetchType.EAGER) // Many = Board, one = User
-    @JoinColumn(name="userId")//필드값 userId로 들어감
+    @JoinColumn(name = "userId")//필드값 userId로 들어감
     private User user; //DB는 오브젝트를 저장할 수 없다. FK, 자바는 오브젝트를 저장할 수 있다.
 
-    @OneToMany(mappedBy = "board",fetch = FetchType.LAZY) //mappedBy 연관관계의 주인이 아니다(난 FK가 아니예요) DB에 칼럼을 만들지 마세요
+    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY) //mappedBy 연관관계의 주인이 아니다(난 FK가 아니예요) DB에 칼럼을 만들지 마세요
     private List<Reply> reply;
 
     @CreationTimestamp
