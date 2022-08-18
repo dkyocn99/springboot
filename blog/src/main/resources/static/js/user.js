@@ -31,7 +31,7 @@ let index = {
             alert("회원가입이 완료되었습니다.");
             console.log(resp);
             alert(resp);
-            //location.href="/blog"
+            location.href="/blog"
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
