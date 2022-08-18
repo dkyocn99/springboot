@@ -17,6 +17,7 @@ public class UserApiController {
 
         log.info("UserApiController: save 호출됨");
         //System.out.println("UserApiController: save 호출됨");
-        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+        //실제로 DB에 insert를 하고 아래에서 return
+        return new ResponseDto<Integer>(HttpStatus.OK, 1); //java오브젝트를 json으로 변환해서 리턴(jackson)
     }
 }
