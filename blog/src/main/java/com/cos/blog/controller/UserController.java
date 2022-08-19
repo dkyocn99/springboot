@@ -12,6 +12,7 @@ public class UserController {
         return"/user/joinForm";
     }
 
+
     @GetMapping("/loginForm")
     public String loginForm() {
 
