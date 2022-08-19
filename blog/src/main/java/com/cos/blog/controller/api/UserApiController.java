@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
+
 @Slf4j
 @RestController
 public class UserApiController {
@@ -29,5 +31,17 @@ public class UserApiController {
         user.setRole(RoleType.USER);
         userService.join(user);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); //java오브젝트를 json으로 변환해서 리턴(jackson)
+    }
+
+    @PostMapping("/api/user/login")
+    public ResponseDto<Integer> login(@RequestBody User user, HttpSession session) {
+
+        log.info("UserApiController : login호출됨");
+        User principal = userService.login(user);//principal(접근주체)
+
+        if(principal != null) {
+            session.setAttribute("principal", principal);
+        }
+        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 }
