@@ -5,6 +5,9 @@ let index = {
         $("#btn-save").on("click", () => { //function(){}을 사용하지 않고 ()=>{}을 사용하는 이유는 this를 바인딩하기 위해
             this.save();
         });
+        $("#btn-login").on("click", () => { //function(){}을 사용하지 않고 ()=>{}을 사용하는 이유는 this를 바인딩하기 위해
+            this.login();
+        });
     },
 
     save: function () {
@@ -23,15 +26,15 @@ let index = {
         $.ajax({
             //회원가입 수행 요청(100초 가정)
             type:"POST",
-            url:"/blog/api/user",
+            url:"/api/user",
             data: JSON.stringify(data), //http body데이터
             contentType: "application/json;", //body데이터가 어떤 타입인지(MIME)
             //dataType: "json" //요청을 서버로 응답이 왔을 떄 기본적으로 모든 것이 문자열(생긴게 json이라면) => javascript오브젝트로 변경
         }).done(function(resp) {
             alert("회원가입이 완료되었습니다.");
             console.log(resp);
-            alert(resp);
-            location.href="/blog"
+            // alert(resp);
+            location.href="/"
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
@@ -51,15 +54,15 @@ let index = {
         //ajax가 통신을 성공하고 서버가 json을 리턴해주면 자동으로 java오브젝로 변환해줌
         $.ajax({
             type:"POST",
-            url:"/blog/api/user/login",
+            url:"/api/user/login",
             data: JSON.stringify(data), //http body데이터
             contentType: "application/json;", //body데이터가 어떤 타입인지(MIME)
             //dataType: "json" //요청을 서버로 응답이 왔을 떄 기본적으로 모든 것이 문자열(생긴게 json이라면) => javascript오브젝트로 변경
         }).done(function(resp) {
             alert("로그인이 완료되었습니다.");
             console.log(resp);
-            alert(resp);
-            location.href="/blog"
+            // alert(resp);
+            location.href="/"
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });

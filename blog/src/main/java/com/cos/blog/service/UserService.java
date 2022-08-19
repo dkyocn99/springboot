@@ -19,6 +19,9 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+//    @Autowired
+//    private UserRepository userRepository;
+
     @Transactional
     public void join(User user) {
         userRepository.save(user);

@@ -21,6 +21,8 @@ public class UserApiController {
     public UserApiController(UserService userService) {
         this.userService = userService;
     }
+//    @Autowired
+//    private UserService userService;
 
     @PostMapping("api/user")
     public ResponseDto<Integer> save(@RequestBody User user) {
