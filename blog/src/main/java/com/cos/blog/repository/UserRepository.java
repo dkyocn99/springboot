@@ -9,5 +9,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 //@Repository 생략 가능하다
 public interface UserRepository extends JpaRepository<User,Integer> {
 
+    // JPA Naming 쿼리
+    //select * from user where username = ?1 and password = ?2
+    User findByUsernameAndPassword(String username, String password);
 
+//    @Query(vlaue ="select * from user where username = ?1 and password=?2",nativeQuery = true)
+//    User login(String username,String pssword);
 }

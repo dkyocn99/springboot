@@ -1,6 +1,6 @@
 <th:block th:include="layout/header.html"></th:block>
 <div class="container">
-    <form action="/action_page.php">
+    <form>
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" placeholder="Enter username" id="username">
@@ -13,7 +13,9 @@
             <label for="email">Email</label>
             <input type="email" class="form-control" placeholder="Enter email" id="email">
         </div>
-        <button type="submit" class="btn btn-primary">JOIN</button>
     </form>
+    <button id="btn-save" class="btn btn-primary">JOIN</button>
 </div>
+
+<script src="/js/user.js"></script>
 <th:block th:include="layout/footer.html"></th:block>
