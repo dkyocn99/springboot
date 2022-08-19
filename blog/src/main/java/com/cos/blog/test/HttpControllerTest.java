@@ -19,9 +19,10 @@ public class HttpControllerTest {
         Member m = Member.builder().username("ssar").password("1234").email("ssar@nate.com").build();
 
         log.info("{} getter : {}", TAG, m.getUsername());
-        System.out.println(TAG + "getter : " + m.getUsername());
+//        System.out.println(TAG + "getter : " + m.getUsername());
         m.setUsername("cos");
-        System.out.println(TAG + "getter : " + m.getUsername());
+        log.info("{} getter : {}", TAG, m.getUsername());
+//        System.out.println(TAG + "getter : " + m.getUsername());
 
         return "lombok test 완료";
     }
