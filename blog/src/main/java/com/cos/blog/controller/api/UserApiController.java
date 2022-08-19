@@ -5,7 +5,6 @@ import com.cos.blog.model.RoleType;
 import com.cos.blog.model.User;
 import com.cos.blog.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,8 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserApiController {
 
-    @Autowired
-    private UserService userService;
+//@Autowired 대신에 아래와 같이
+    private final UserService userService;
+    public UserApiController(UserService userService) {
+        this.userService = userService;
+    }
+
     @PostMapping("api/user")
     public ResponseDto<Integer> save(@RequestBody User user) {
 

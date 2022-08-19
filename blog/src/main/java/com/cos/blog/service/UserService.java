@@ -3,7 +3,6 @@ package com.cos.blog.service;
 import com.cos.blog.model.User;
 import com.cos.blog.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -13,8 +12,12 @@ import javax.transaction.Transactional;
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    //@Autowired
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Transactional
     public void join(User user) {
